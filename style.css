@@ -82,6 +82,12 @@ button {
   cursor: pointer;
 }
 
+header button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-list a {
   display: inline-block;
   padding: 8px 10px;
