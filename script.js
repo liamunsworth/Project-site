@@ -1,15 +1,14 @@
 let lastScrollY = window.scrollY;
+const header = document.querySelector("header");
 
-window.addEventListener("scroll",() => {
-    const header = document.querySelector("header");
+window.addEventListener("scroll", () => {
+  if (window.scrollY < lastScrollY) {
+    // scrolling UP
+    header.style.transform = "translateY(0)";
+  } else {
+    // scrolling DOWN
+    header.style.transform = "translateY(-100%)";
+  }
 
-    if(window.scrollY > lastScrollY) {
-        header.style.transform = "translateY(-100%)";
-
-    } else {
-        header.style.transform = "translateY(0)";
-    }
-
-    lastScrollY = window.scrollY;
-
+  lastScrollY = window.scrollY;
 });
