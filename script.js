@@ -1,14 +1,37 @@
 let lastScrollY = window.scrollY;
-const header = document.querySelector("header");
+let headerHeight = 0;
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY < lastScrollY) {
-    // scrolling UP
-    header.style.transform = "translateY(0)";
-  } else {
-    // scrolling DOWN
-    header.style.transform = "translateY(-100%)";
-  }
+fetch("./header.html")
+  .then(res => res.text())
+  .then(html => {
+    const headerContainer = document.getElementById("header");
+    headerContainer.innerHTML = html;
 
-  lastScrollY = window.scrollY;
-});
+    const header = headerContainer.querySelector("header");
+    headerHeight = header.offsetHeight;
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show at the very top
+      if (currentScrollY <= 0) {
+        header.style.transform = "translateY(0)";
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      // Scrolling down → hide
+      if (currentScrollY > lastScrollY) {
+        header.style.transform = `translateY(-${headerHeight}px)`;
+      }
+      // Scrolling up → show
+      else {
+        header.style.transform = "translateY(0)";
+      }
+
+      lastScrollY = currentScrollY;
+    });
+  })
+  .catch(console.error);
+
+
