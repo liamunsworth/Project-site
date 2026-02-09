@@ -48,12 +48,16 @@ header {
   padding: 10px 0;
   transition: transform 0.25s ease;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
 header h1,
 header h2,
 header p {
-  margin: 0;
+  margin: 0 0 6px 0;
 }
 
 
