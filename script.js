@@ -1,14 +1,23 @@
 let lastScrollY = window.scrollY;
 let headerHeight = 0;
 //header on each page
-fetch("./header.html")
+const base = window.location.pathname.includes("/Project-site/") ? "/Project-site/" : "/";
+fetch(base + "header.html")
   .then(res => res.text())
   .then(html => {
     const headerContainer = document.getElementById("header");
     headerContainer.innerHTML = html;
 
-    const header = headerContainer.querySelector("header");
-    headerHeight = header.offsetHeight;
+const header = headerContainer.querySelector("header");
+headerHeight = header.offsetHeight;
+
+// ✅ make body padding match the real header height on every page
+document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
+
+window.addEventListener("resize", () => {
+  headerHeight = header.offsetHeight;
+  document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
+});
 
 //toggle dark
 
@@ -34,8 +43,6 @@ toggleBtn.addEventListener("click", () => {
   // 6) Save the new theme so it persists after refresh
   localStorage.setItem("theme", isDark ? "dark" : "light");
 });
-
-
 
     window.addEventListener("scroll", () => {
       const currentScrollY = window.scrollY;
