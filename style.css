@@ -71,9 +71,15 @@ nav {
   padding: 0;
   margin: 0;
 }
-button{
+
+button {
+  font: inherit;          /* inherit font-size + family */
+  line-height: 1;         /* normal text height */
+  padding: 8px 12px;      /* explicit padding */
   margin: 0;
-  line-height: 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .nav-list a {
