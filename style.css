@@ -9,6 +9,7 @@ body {
 
 h1 {
   color: var(--heading);
+  margin-top: 0;
 }
 
 p {
@@ -38,7 +39,6 @@ a:hover {
 
 /* ===== Layout ===== */
 header {
-  min-height:var(--header-height);
   text-align: center;
   position: fixed;
   top: 0;
@@ -50,8 +50,15 @@ header {
   z-index: 1000;
 }
 
+header h1,
+header h2,
+header p {
+  margin: 0;
+}
+
+
 nav {
-  margin-top: 10px;
+  margin: 0;
 }
 
 .nav-list {
@@ -61,8 +68,12 @@ nav {
   flex-wrap: wrap;
   gap: 20px;
   row-gap: 10px;
-  padding: 0 12px;
+  padding: 0;
   margin: 0;
+}
+button{
+  margin: 0;
+  line-height: 0;
 }
 
 .nav-list a {
@@ -89,7 +100,7 @@ nav {
 .top-row section {
   flex: 1;
   min-width: 250px;
-  text-align: center;
+  text-align: left;
 }
 
 .bottom-row {
@@ -106,6 +117,9 @@ nav {
 .grid-layout .card {
   margin-bottom: 0;
 }
+.card {
+  line-height: 1.5;
+}
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
@@ -118,7 +132,7 @@ nav {
   }
 
   .card {
-    margin-bottom: 15px;
+    margin-bottom: 0;
   }
 
   .grid-layout .card {
