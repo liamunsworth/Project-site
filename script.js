@@ -1,6 +1,6 @@
 let lastScrollY = window.scrollY;
 let headerHeight = 0;
-
+//header on each page
 fetch("./header.html")
   .then(res => res.text())
   .then(html => {
@@ -9,6 +9,33 @@ fetch("./header.html")
 
     const header = headerContainer.querySelector("header");
     headerHeight = header.offsetHeight;
+
+//toggle dark
+
+    // 1) Grab the button from the page
+const toggleBtn = document.querySelector("#themeToggle");
+
+// 2) When the page loads, check if a theme was saved before
+const savedTheme = localStorage.getItem("theme"); // returns "dark", "light", or null
+
+// 3) If the saved theme was dark, apply it immediately
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+}
+
+// 4) When the button is clicked, toggle dark mode
+toggleBtn.addEventListener("click", () => {
+  // Flip the class on/off
+  document.body.classList.toggle("dark");
+
+  // 5) After toggling, check what the current theme is
+  const isDark = document.body.classList.contains("dark");
+
+  // 6) Save the new theme so it persists after refresh
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+
+
 
     window.addEventListener("scroll", () => {
       const currentScrollY = window.scrollY;

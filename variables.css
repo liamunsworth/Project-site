@@ -1,0 +1,22 @@
+/* ===== Theme Variables ===== */
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --heading: #ff0000;
+  --paragraph: #555555;
+  --card-bg: #63f700;
+  --link: #ff6f00;
+  --header-bg: #63f700;
+  --border-radius: 5px;
+  --header-height: 140px;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f5f5f5;
+  --heading: #f5f5f5;
+  --paragraph: #d0d0d0;
+  --card-bg: #1e1e1e;
+  --link: #90caf9;
+  --header-bg: #1e1e1e;
+}
